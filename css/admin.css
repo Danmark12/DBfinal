@@ -1,0 +1,56 @@
+<?php
+@include 'config.php'; // Include the configuration for the database connection
+session_start();
+
+// Check if the user is logged in as admin
+if (!isset($_SESSION['admin_id'])) {
+    header('location:admin_login.php'); // Redirect to admin login page if not an admin
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin.css"> <!-- Custom CSS -->
+</head>
+<body>
+
+    <!-- Admin Dashboard Layout -->
+    <div class="dashboard-container">
+        <h1>Admin Dashboard</h1>
+        
+        <!-- Admin Sections - Each section is a clickable card -->
+        <div class="dashboard-cards">
+            <div class="card">
+                <h3>Manage Users</h3>
+                <p>View, deactivate, or delete users</p>
+                <a href="manage_users.php" class="button">Go to Users</a>
+            </div>
+            
+            <div class="card">
+                <h3>Manage Books</h3>
+                <p>Add, edit, or delete books</p>
+                <a href="manage_books.php" class="button">Go to Books</a>
+            </div>
+            
+            <div class="card">
+                <h3>Manage Posts</h3>
+                <p>View, delete, or manage posts</p>
+                <a href="manage_posts.php" class="button">Go to Posts</a>
+            </div>
+            
+            <div class="card">
+                <h3>Manage Reviews</h3>
+                <p>Approve, delete, or manage reviews</p>
+                <a href="manage_reviews.php" class="button">Go to Reviews</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
